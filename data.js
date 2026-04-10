@@ -1,0 +1,225 @@
+window.ZS_DATA = {
+  "site": {
+    "name": "ZenScripts",
+    "tagline": "Free Scripts. No Limits."
+  },
+  "partners": [
+    {
+      "id": "cheapsmm",
+      "name": "CheapSMM",
+      "url": "https://cheapsmm.lol",
+      "logo": "https://cdn.discordapp.com/attachments/1129468786089664553/1491902967048179722/trans.png?ex=69d96269&is=69d810e9&hm=e1cb0851ba8601c0ebca91d3204e6371b58b5dca03e3309ccbb499f45d4c8482&",
+      "tagline": "Cheapest SMM Panel Online",
+      "description": "Boost your social media with real followers, likes and views across all major platforms. Trusted by thousands of satisfied customers.",
+      "badge": "Trusted Partner",
+      "badgeColor": "#00d4aa",
+      "platforms": ["Instagram", "TikTok", "YouTube", "Twitter", "Facebook"],
+      "highlight": "Starting at $0.001"
+    },
+    {
+      "id": "zenscripts-shop",
+      "name": "ZenScripts Pro",
+      "url": "https://zenscripts.pro",
+      "logo": "https://storage.perfectcdn.com/n4s4s1/3c0zw7ujt2i3axow.png",
+      "tagline": "Premium Scripts and Tools",
+      "description": "Upgrade to premium scripts with advanced features, priority updates, and dedicated support.",
+      "badge": "Official Shop",
+      "badgeColor": "#6c63ff",
+      "platforms": ["Rust", "R6 Siege", "COD", "Apex", "Valorant"],
+      "highlight": "Premium Quality"
+    }
+  ],
+  "adBanners": [
+    {
+      "id": "banner-hero",
+      "position": "hero-bottom",
+      "label": "Advertisement",
+      "cta": "Your Ad Here — Reach Thousands of Gamers Daily",
+      "subtext": "Click to place your advertisement on this spot"
+    },
+    {
+      "id": "banner-mid",
+      "position": "mid-content",
+      "label": "Advertisement",
+      "cta": "Place Your Ad Here — Prime Visibility Spot",
+      "subtext": "Thousands of daily visitors see this space"
+    },
+    {
+      "id": "banner-footer",
+      "position": "pre-footer",
+      "label": "Advertisement",
+      "cta": "Advertise With Us",
+      "subtext": "Fill out our quick ad form and get started today"
+    },
+    {
+      "id": "banner-sidebar",
+      "position": "sidebar",
+      "label": "Advertisement",
+      "cta": "Sidebar Ad Spot",
+      "subtext": "Promote your brand in this high-visibility box"
+    }
+  ],
+  "premiumScripts": [
+    {
+      "id": "premium-rust-vip",
+      "name": "Rust Elite Pack",
+      "game": "Rust",
+      "badge": "Best Seller",
+      "description": "Advanced anti-recoil package with frequent tuning updates and VIP setup assistance.",
+      "features": ["VIP Support", "Fast Updates", "Preset Profiles", "Private Access"],
+      "price": "$24.99",
+      "checkoutUrl": "https://sellhub.cx"
+    },
+    {
+      "id": "premium-r6-vip",
+      "name": "R6 Siege Pro Bundle",
+      "game": "Rainbow Six",
+      "badge": "Popular",
+      "description": "Competitive-ready profile bundle optimized for consistency and lower setup time.",
+      "features": ["Operator Profiles", "Fine Tune Guide", "VIP Channel", "Priority Updates"],
+      "price": "$19.99",
+      "checkoutUrl": "https://sellhub.cx"
+    },
+    {
+      "id": "premium-cod-vip",
+      "name": "COD Ultimate Script",
+      "game": "Call of Duty",
+      "badge": "New",
+      "description": "All-mode premium package with regular updates and direct VIP onboarding support.",
+      "features": ["Warzone + MP", "Rapid Setup", "24h Support", "Early Access"],
+      "price": "$29.99",
+      "checkoutUrl": "https://sellhub.cx"
+    }
+  ],
+  "categories": [
+    { "id": "all",       "name": "All Scripts",     "icon": "grid-2x2" },
+    { "id": "rust",      "name": "Rust",            "icon": "wrench" },
+    { "id": "apex",      "name": "Apex Legends",    "icon": "gamepad-2" },
+    { "id": "r6",        "name": "Rainbow Six",     "icon": "shield" },
+    { "id": "cod",       "name": "Call of Duty",    "icon": "crosshair" },
+    { "id": "fortnite",  "name": "Fortnite",        "icon": "hammer" },
+    { "id": "minecraft", "name": "Minecraft",       "icon": "pickaxe" },
+    { "id": "valorant",  "name": "Valorant",        "icon": "hexagon" },
+    { "id": "csgo",      "name": "CS2 / CSGO",      "icon": "bomb" },
+    { "id": "utility",   "name": "Utility & Tools", "icon": "sliders-horizontal" }
+  ],
+  "scripts": [
+    {
+      "name": "Rust No Recoil Script — PS5, PS4, Xbox, PC",
+      "game": "Rust",
+      "category": "rust",
+      "description": "Full no-recoil macro for all Rust weapons. Supports AK, LR300, MP5, SAR and more.",
+      "tags": ["popular", "recommended"],
+      "version": "N/A",
+      "executor": ["Logitech GHub", "Titan", "Zen"],
+      "downloads": 614,
+      "features": [
+        "All Weapons",
+        "Pattern Compensation",
+        "Sensitivity Adjust",
+        "Attachment Support",
+        "Crouch Comp"
+      ],
+      "downloadUrl": "https://linkvertise.com/4963039/NEB2Laq6FjNF?o=sharing"
+    },
+    {
+      "name": "Rust Random Script",
+      "game": "Rust",
+      "category": "rust",
+      "description": "Randomized recoil script for Rust. Keeps your spray pattern unpredictable and harder to detect.",
+      "tags": ["new"],
+      "version": "N/A",
+      "executor": ["AutoHotkey", "Logitech GHub"],
+      "downloads": 214,
+      "features": [
+        "All Gun Patterns",
+        "Fine Tune Support",
+        "Attachment Comp",
+        "Toggle"
+      ],
+      "downloadUrl": "https://linkvertise.com/4963039/NEB2Laq6FjNF?o=sharing"
+    },
+    {
+      "name": "Apex Legends No Recoil Script — PS5, PS4, Xbox, PC",
+      "game": "Apex Legends",
+      "category": "apex",
+      "description": "Precision no-recoil script for Apex Legends. Updated for all current weapons and legends.",
+      "tags": ["popular"],
+      "version": "N/A",
+      "executor": ["Zen"],
+      "downloads": 73,
+      "features": [
+        "All Gun Patterns",
+        "Toggle",
+        "Updated Regularly"
+      ],
+      "downloadUrl": "https://linkvertise.com/4963039/XHmqSDmt8HgI?o=sharing"
+    },
+    {
+      "name": "R6 Siege No Recoil Zen Script — Fine Tune (Panda Scripts)",
+      "game": "Rainbow Six Siege",
+      "category": "r6",
+      "description": "Universal no-recoil macro for Rainbow Six Siege. Works with all operators and weapons.",
+      "tags": ["new", "recommended"],
+      "version": "N/A",
+      "executor": ["Zen"],
+      "downloads": 94,
+      "features": [
+        "All Operators",
+        "Weapon Profiles",
+        "Attachment Comp",
+        "Rapid Fire"
+      ],
+      "downloadUrl": "https://linkvertise.com/4963039/YregjtZbLP7s?o=sharing"
+    },
+    {
+      "name": "Call of Duty Scripts — All Modes",
+      "game": "Call of Duty",
+      "category": "cod",
+      "description": "Full no-recoil and rapid fire macro for Call of Duty. Works across Warzone, MW3 and Black Ops.",
+      "tags": ["popular"],
+      "version": "N/A",
+      "executor": ["Zen"],
+      "downloads": 100,
+      "features": [
+        "Any Game Mode",
+        "Configurable Rate",
+        "Toggle",
+        "Lightweight"
+      ],
+      "downloadUrl": "https://linkvertise.com/4963039/A9hiPpEAQMHe?o=sharing"
+    },
+    {
+      "name": "Fortnite Zen Script — Xbox, PS5, PS4, PC",
+      "game": "Fortnite",
+      "category": "fortnite",
+      "description": "Fortnite script with soft aim, drop-shot and custom sensitivity settings for controller players.",
+      "tags": ["new", "recommended"],
+      "version": "N/A",
+      "executor": ["Zen"],
+      "downloads": 115,
+      "features": [
+        "Custom Settings",
+        "Drop-Shot",
+        "Soft Aim"
+      ],
+      "downloadUrl": "https://linkvertise.com/4963039/NEB2Laq6FjNF?o=sharing"
+    },
+    {
+      "name": "PC Auto Clicker",
+      "game": "Universal",
+      "category": "utility",
+      "description": "Lightweight auto clicker for PC. Fully configurable click rate, timer and toggle support.",
+      "tags": ["new", "recommended"],
+      "version": "N/A",
+      "executor": ["PC"],
+      "downloads": 34,
+      "features": [
+        "Fast Click Rate",
+        "Timed Mode",
+        "Custom Intervals"
+      ],
+      "downloadUrl": "https://linkvertise.com/4963039/NEB2Laq6FjNF?o=sharing"
+    }
+  ]
+};

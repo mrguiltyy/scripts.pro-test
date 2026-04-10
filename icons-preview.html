@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZenScripts Icon Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --card: #13131c;
+      --border: #1e1e2e;
+      --text: #f0f0ff;
+      --muted: #8b8ba7;
+      --accent: #6c63ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 28px;
+    }
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.8rem;
+    }
+    p {
+      margin: 0 0 22px;
+      color: var(--muted);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 12px;
+    }
+    .card {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .icon {
+      width: 22px;
+      height: 22px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    code {
+      color: var(--text);
+      font-size: 0.82rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Icon Preview</h1>
+    <p>Icons currently used in your site UI.</p>
+    <div class="grid">
+      <div class="card"><i class="icon" data-lucide="x"></i><code>x</code></div>
+      <div class="card"><i class="icon" data-lucide="message-circle"></i><code>message-circle</code></div>
+      <div class="card"><i class="icon" data-lucide="star"></i><code>star</code></div>
+      <div class="card"><i class="icon" data-lucide="handshake"></i><code>handshake</code></div>
+      <div class="card"><i class="icon" data-lucide="rocket"></i><code>rocket</code></div>
+      <div class="card"><i class="icon" data-lucide="search"></i><code>search</code></div>
+      <div class="card"><i class="icon" data-lucide="circle-dot"></i><code>circle-dot</code></div>
+      <div class="card"><i class="icon" data-lucide="flame"></i><code>flame</code></div>
+      <div class="card"><i class="icon" data-lucide="search-x"></i><code>search-x</code></div>
+      <div class="card"><i class="icon" data-lucide="download"></i><code>download</code></div>
+      <div class="card"><i class="icon" data-lucide="clock-3"></i><code>clock-3</code></div>
+      <div class="card"><i class="icon" data-lucide="triangle-alert"></i><code>triangle-alert</code></div>
+      <div class="card"><i class="icon" data-lucide="grid-2x2"></i><code>grid-2x2</code></div>
+      <div class="card"><i class="icon" data-lucide="wrench"></i><code>wrench</code></div>
+      <div class="card"><i class="icon" data-lucide="gamepad-2"></i><code>gamepad-2</code></div>
+      <div class="card"><i class="icon" data-lucide="shield"></i><code>shield</code></div>
+      <div class="card"><i class="icon" data-lucide="crosshair"></i><code>crosshair</code></div>
+      <div class="card"><i class="icon" data-lucide="hammer"></i><code>hammer</code></div>
+      <div class="card"><i class="icon" data-lucide="pickaxe"></i><code>pickaxe</code></div>
+      <div class="card"><i class="icon" data-lucide="hexagon"></i><code>hexagon</code></div>
+      <div class="card"><i class="icon" data-lucide="bomb"></i><code>bomb</code></div>
+      <div class="card"><i class="icon" data-lucide="sliders-horizontal"></i><code>sliders-horizontal</code></div>
+      <div class="card"><i class="icon" data-lucide="briefcase-business"></i><code>briefcase-business</code></div>
+      <div class="card"><i class="icon" data-lucide="box"></i><code>box</code></div>
+      <div class="card"><i class="icon" data-lucide="pin"></i><code>pin</code></div>
+    </div>
+  </div>
+  <script>
+    if (window.lucide) window.lucide.createIcons();
+  </script>
+</body>
+</html>

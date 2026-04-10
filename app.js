@@ -11,49 +11,36 @@ let activeTag      = 'all';
 let searchQuery    = '';
 let sortMode       = 'popular';
 let searchTimeout  = null;
-let allPartners    = [];
-let allPremium     = [];
 
 document.addEventListener('DOMContentLoaded', () => {
-  loadSiteData()
+  fetch('./data.json')
     .then(res => {
-      if (!res || !res.data) throw new Error('Data response missing');
-      if (!res.ok) throw new Error(res.error || ('HTTP ' + res.status));
-      return res.data;
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json();
     })
     .then(data => {
       if (!data.scripts || !Array.isArray(data.scripts)) {
         throw new Error('scripts array missing from data.json');
       }
       allScripts = data.scripts;
-      allPartners = data.partners || [];
-      allPremium = data.premiumScripts || [];
-      buildPartners(allPartners);
+      buildPartners(data.partners    || []);
       buildBanners(data.adBanners    || []);
-      buildPremium(allPremium);
       buildCategories(data.categories || []);
       applyFilters();
       bindEvents();
-      bindTracking();
-      refreshIcons();
     })
     .catch(err => {
-      console.error('Failed to load site data:', err);
+      console.error('Failed to load data.json:', err);
       const grid = document.getElementById('scripts-grid');
       if (grid) {
-        const isFileProtocol = window.location.protocol === 'file:';
-        const helpLine = isFileProtocol
-          ? 'You opened this page directly from your files. Start a local server and open http://localhost:5500'
-          : 'Make sure data.json is in the same folder and your server root is this website folder.';
         grid.innerHTML = `
           <div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#6b6b8a;">
-            <div style="font-size:2.5rem;margin-bottom:12px;"><i data-lucide="triangle-alert"></i></div>
+            <div style="font-size:2.5rem;margin-bottom:12px;">⚠️</div>
             <h3 style="color:#f0f0ff;margin-bottom:8px;">Failed to load scripts</h3>
-            <p>${helpLine}</p>
+            <p>Make sure data.json is in the same folder as index.html</p>
             <p style="margin-top:8px;font-size:0.8rem;opacity:0.6;">${err.message}</p>
           </div>
         `;
-        refreshIcons();
       }
     });
 
@@ -62,26 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
   }, { passive: true });
 });
-
-function loadSiteData() {
-  if (window.ZS_DATA && typeof window.ZS_DATA === 'object') {
-    return Promise.resolve({ ok: true, status: 200, data: window.ZS_DATA });
-  }
-
-  return fetch('./data.json')
-    .then(res => {
-      if (!res.ok) {
-        return { ok: false, status: res.status, error: 'HTTP ' + res.status, data: null };
-      }
-      return res.json().then(data => ({ ok: true, status: res.status, data }));
-    })
-    .catch(err => ({ ok: false, status: 0, error: err.message || 'Fetch failed', data: null }));
-}
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Welcome Popup ── */
   initWelcomePopup();
-  refreshIcons();
 
   // ... rest of your existing code
 });
@@ -138,7 +109,7 @@ function buildPartners(partners) {
   const grid = document.getElementById('partners-grid');
   if (!grid || !partners.length) return;
   grid.innerHTML = partners.map(p => `
-    <a class="partner-card" data-partner-id="${safe(p.id || p.name)}" href="${safe(p.url)}" target="_blank" rel="noopener">
+    <a class="partner-card" href="${safe(p.url)}" target="_blank" rel="noopener">
       <div class="partner-top">
         <div class="partner-logo-wrap">
           <img class="partner-logo" src="${safe(p.logo)}" alt="${safe(p.name)}" onerror="this.style.display='none'" />
@@ -157,43 +128,9 @@ function buildPartners(partners) {
       </div>
       <div class="partner-footer">
         <span class="partner-highlight">${safe(p.highlight)}</span>
-        <span class="partner-visit">Unlock ${safe(p.name)} Perks →</span>
+        <span class="partner-visit">Visit ${safe(p.name)} →</span>
       </div>
     </a>
-  `).join('');
-  refreshIcons();
-}
-
-function buildPremium(items) {
-  const grid = document.getElementById('premium-grid');
-  if (!grid) return;
-  if (!items.length) {
-    grid.innerHTML = '';
-    return;
-  }
-
-  grid.innerHTML = items.map(item => `
-    <article class="premium-card">
-      <div class="premium-top">
-        <span class="premium-game">${safe(item.game || 'Premium')}</span>
-        ${item.badge ? `<span class="premium-badge">${safe(item.badge)}</span>` : ''}
-      </div>
-      <h3 class="premium-name">${safe(item.name || 'Premium Script')}</h3>
-      <p class="premium-desc">${safe(item.description || 'Optimized premium script package with regular updates.')}</p>
-      <div class="premium-features">
-        ${(item.features || []).slice(0, 4).map(f => `<span>${safe(f)}</span>`).join('')}
-      </div>
-      <div class="premium-footer">
-        <span class="premium-price">${safe(item.price || '$19.99')}</span>
-        <a class="btn btn-primary premium-buy-btn"
-           data-product-id="${safe(item.id || item.name || 'premium')}"
-           href="${safe(item.checkoutUrl || 'https://sellhub.cx')}"
-           target="_blank"
-           rel="noopener">
-          Buy Now
-        </a>
-      </div>
-    </article>
   `).join('');
 }
 
@@ -206,21 +143,12 @@ function buildBanners(banners) {
     'sidebar':     'slot-sidebar'
   };
   banners.forEach(b => {
-    const normalized = normalizeBanner(b);
     const slotId = slotMap[b.position];
     if (!slotId) return;
     const slot = document.getElementById(slotId);
     if (!slot) return;
-    slot.innerHTML = b.position === 'sidebar' ? boxBanner(normalized) : wideBanner(normalized);
+    slot.innerHTML = b.position === 'sidebar' ? boxBanner(b) : wideBanner(b);
   });
-  refreshIcons();
-}
-
-function normalizeBanner(banner) {
-  const cta = banner.cta || banner.title || banner.text || 'Your Ad Here';
-  const subtext = banner.subtext || banner.description || 'Click to place your advertisement on this spot';
-  const label = banner.label || 'Advertisement';
-  return { ...banner, cta, subtext, label };
 }
 
 function wideBanner(b) {
@@ -253,11 +181,10 @@ function buildCategories(categories) {
   if (!tabs) return;
   tabs.innerHTML = categories.map(c => `
     <button class="cat-tab ${c.id === 'all' ? 'active' : ''}" data-cat="${safe(c.id)}">
-      <i data-lucide="${safe(c.icon || 'circle')}"></i>
+      <span>${safe(c.icon)}</span>
       <span>${safe(c.name)}</span>
     </button>
   `).join('');
-  refreshIcons();
 }
 
 /* ── Apply Filters ── */
@@ -308,7 +235,6 @@ function renderScripts(append) {
     if (noRes)    noRes.classList.remove('hidden');
     if (loadWrap) loadWrap.classList.add('hidden');
     if (countEl)  countEl.textContent = '0 scripts found';
-    refreshIcons();
     return;
   }
 
@@ -356,7 +282,6 @@ function renderScripts(append) {
       loadWrap.classList.add('hidden');
     }
   }
-  refreshIcons();
 }
 
 /* ── Script Card ── */
@@ -376,7 +301,7 @@ function scriptCard(s) {
       ${tags     ? `<div class="script-tags">${tags}</div>`         : ''}
       ${features ? `<div class="script-features">${features}</div>` : ''}
       <div class="script-footer">
-        <span class="script-downloads"><i data-lucide="download"></i> ${formatNum(s.downloads || 0)}</span>
+        <span class="script-downloads">⬇️ ${formatNum(s.downloads || 0)}</span>
         <button class="script-dl-btn">Download</button>
       </div>
     </div>
@@ -402,17 +327,16 @@ function openModal(s) {
     <div class="modal-desc">${safe(s.description)}</div>
     ${features  ? `<div class="modal-section-title">Features</div><div class="modal-features">${features}</div>` : ''}
     ${executors ? `<div class="modal-section-title">Compatible With</div><div class="modal-executors">${executors}</div>` : ''}
-    <div class="modal-downloads"><i data-lucide="download"></i> ${formatNum(s.downloads || 0)} downloads</div>
+    <div class="modal-downloads">⬇️ ${formatNum(s.downloads || 0)} downloads</div>
     <a class="modal-dl-btn ${!hasLink ? 'modal-dl-disabled' : ''}"
       href="${hasLink ? safe(s.downloadUrl) : 'javascript:void(0)'}"
       ${hasLink ? 'target="_blank" rel="noopener"' : ''}>
-      <i data-lucide="${hasLink ? 'download' : 'clock-3'}"></i> ${hasLink ? 'Download Script' : 'Coming Soon'}
+      ⬇️ ${hasLink ? 'Download Script' : 'Coming Soon'}
     </a>
   `;
 
   overlay.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
-  refreshIcons();
 }
 
 function closeModal() {
@@ -431,17 +355,11 @@ function handleDownload(url) {
 function buildTags(tags) {
   if (!Array.isArray(tags) || !tags.length) return '';
   return tags.map(t => {
-    if (t === 'new')         return '<span class="tag tag-new-pill"><i data-lucide="circle-dot"></i> New</span>';
-    if (t === 'popular')     return '<span class="tag tag-pop-pill"><i data-lucide="flame"></i> Popular</span>';
-    if (t === 'recommended') return '<span class="tag tag-rec-pill"><i data-lucide="star"></i> Recommended</span>';
+    if (t === 'new')         return '<span class="tag tag-new-pill">🟢 New</span>';
+    if (t === 'popular')     return '<span class="tag tag-pop-pill">🔥 Popular</span>';
+    if (t === 'recommended') return '<span class="tag tag-rec-pill">⭐ Recommended</span>';
     return '';
   }).join('');
-}
-
-function refreshIcons() {
-  if (window.lucide && typeof window.lucide.createIcons === 'function') {
-    window.lucide.createIcons();
-  }
 }
 
 function buildFeaturePills(features, limit) {
@@ -604,41 +522,6 @@ function bindEvents() {
       if (si) si.focus();
     }
   });
-}
-
-function bindTracking() {
-  document.querySelectorAll('a[href*="discord.gg"]').forEach(link => {
-    link.addEventListener('click', () => {
-      trackEvent('discord_click', { href: link.href });
-    });
-  });
-
-  document.querySelectorAll('.partner-card').forEach(card => {
-    card.addEventListener('click', () => {
-      trackEvent('partner_click', {
-        partnerId: card.dataset.partnerId || 'unknown',
-        href: card.href
-      });
-    });
-  });
-
-  document.querySelectorAll('.premium-buy-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      trackEvent('premium_buy_click', {
-        productId: btn.dataset.productId || 'unknown',
-        href: btn.href
-      });
-    });
-  });
-}
-
-function trackEvent(eventName, params) {
-  if (typeof window.gtag === 'function') {
-    window.gtag('event', eventName, params || {});
-  }
-  if (Array.isArray(window.dataLayer)) {
-    window.dataLayer.push({ event: eventName, ...(params || {}) });
-  }
 }
 
 /* ── Reset Filters ── */

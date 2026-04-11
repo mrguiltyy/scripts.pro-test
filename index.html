@@ -3,323 +3,155 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Primary Meta Tags -->
-  <title>ZenScripts.pro — Free Game Scripts Hub</title>
-  <meta name="title" content="ZenScripts — Free Zen Scripts Hub" />
-  <meta name="description" content="Download free zen scripts for Rust, Rainbow Six Siege, COD, Minecraft, Valorant, CS2 and more. No paywalls. No limits. Always free." />
-  <meta name="keywords" content="free zen scripts, rust zen scripts, valorant zen scripts, minecraft cheats, cod zen scripts, r6 zen scripts, cs2 scripts, no zen recoil, game macros, free download" />
-  <meta name="robots" content="index, follow" />
-  <meta name="language" content="English" />
-  <meta name="author" content="ZenScripts" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://hub.zenscripts.pro/" />
-  <meta property="og:title" content="ZenScripts — Free Zen Scripts Hub" />
-  <meta property="og:description" content="Download free zen scripts for Rust, Rainbow Six Siege, COD, Minecraft, Valorant, CS2 and more. No paywalls. No limits. Always free." />
-  <meta property="og:image" content="https://storage.perfectcdn.com/n4s4s1/3c0zw7ujt2i3axow.png" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://hub.zenscripts.pro/" />
-  <meta name="twitter:title" content="ZenScripts — Free Zen Scripts Hub" />
-  <meta name="twitter:description" content="Download free zen scripts for Rust, Rainbow Six Siege, COD, Minecraft, Valorant, CS2 and more. No paywalls. No limits. Always free." />
-  <meta name="twitter:image" content="https://storage.perfectcdn.com/n4s4s1/3c0zw7ujt2i3axow.png" />
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://hub.zenscripts.pro/" />
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Are scripts on ZenScripts free?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. ZenScripts provides free script listings and updates for multiple games."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I get VIP Discord access?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Use the VIP Discord links on this site to join the community for early drops, giveaways, and support."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you offer premium scripts?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Premium scripts are listed in the Premium section with secure checkout links."
-          }
-        }
-      ]
-    }
-  </script>
-
-  <link rel="stylesheet" href="./styles.css" />
+  <title>ZenScripts — Premium Free Game Scripts Hub</title>
+  
+  <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/lucide@latest"></script>
-
-  <script>
-    /* Remove index.html from URL if present */
-    if (window.location.pathname.includes('index.html')) {
-      window.history.replaceState(null, null,
-        window.location.pathname.replace('index.html', '') +
-        window.location.search +
-        window.location.hash
-      );
-    }
-  </script>
+  
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- Welcome Popup -->
-  <div class="welcome-overlay" id="welcome-overlay">
+  <!-- WELCOME POPUP -->
+  <div class="welcome-overlay hidden" id="welcome-overlay">
     <div class="welcome-modal">
-      <button class="welcome-close" id="welcome-close" aria-label="Close welcome popup">
-        <i data-lucide="x"></i>
-      </button>
+      <button class="welcome-close" id="welcome-close"><i data-lucide="x"></i></button>
       <div class="welcome-header">
-        <img src="https://storage.perfectcdn.com/n4s4s1/3c0zw7ujt2i3axow.png" alt="ZenScripts" class="welcome-logo" />
+        <img src="https://storage.perfectcdn.com/n4s4s1/3c0zw7ujt2i3axow.png" alt="ZenScripts" />
         <h2>Welcome to <span class="gradient-text">ZenScripts</span></h2>
-        <p>Members-only style community perks, free drops, and partner deals</p>
+        <p>The #1 free scripts hub for the community</p>
       </div>
       <div class="welcome-cards">
-        <a href="https://discord.gg/9ht3vqUkCm" target="_blank" rel="noopener" class="welcome-card welcome-card-discord">
-          <div class="welcome-card-icon"><i data-lucide="message-circle"></i></div>
-          <div class="welcome-card-text">
-            <span class="welcome-card-title">Join VIP Discord Access</span>
-            <span class="welcome-card-sub">Early script drops, giveaways, and private help channels</span>
-          </div>
-          <span class="welcome-card-arrow">→</span>
+        <a href="https://discord.gg/9ht3vqUkCm" target="_blank" class="welcome-item discord">
+          <i data-lucide="message-circle"></i>
+          <div><span>Join Our Discord</span><small>Get support & updates</small></div>
+          <i data-lucide="chevron-right" class="arrow"></i>
         </a>
-        <a href="https://zenscripts.pro" target="_blank" rel="noopener" class="welcome-card welcome-card-premium">
-          <div class="welcome-card-icon"><i data-lucide="star"></i></div>
-          <div class="welcome-card-text">
-            <span class="welcome-card-title">Premium Scripts Store</span>
-            <span class="welcome-card-sub">Unlock advanced scripts and features</span>
-          </div>
-          <span class="welcome-card-arrow">→</span>
-        </a>
-        <a href="https://cheapsmm.lol" target="_blank" rel="noopener" class="welcome-card welcome-card-partner">
-          <div class="welcome-card-icon"><i data-lucide="handshake"></i></div>
-          <div class="welcome-card-text">
-            <span class="welcome-card-title">Partner Vault Deals</span>
-            <span class="welcome-card-sub">Trusted partner offers picked for ZenScripts members</span>
-          </div>
-          <span class="welcome-card-arrow">→</span>
+        <a href="https://zenscripts.pro" target="_blank" class="welcome-item premium">
+          <i data-lucide="shield-check"></i>
+          <div><span>ZenScripts Pro</span><small>Advanced premium scripts</small></div>
+          <i data-lucide="chevron-right" class="arrow"></i>
         </a>
       </div>
-      <div class="welcome-footer">
-        <label class="welcome-check">
-          <input type="checkbox" id="dont-show-again" />
-          <span>Don't show this again</span>
-        </label>
-        <button class="btn btn-primary" id="welcome-enter">
-          Browse Free Scripts →
-        </button>
-      </div>
+      <button class="btn btn-primary w-full" id="welcome-enter">Start Browsing</button>
+      <label class="dont-show">
+        <input type="checkbox" id="dont-show-again"> Don't show this again
+      </label>
     </div>
   </div>
 
-  <!-- NAVBAR -->
+  <!-- NAVIGATION -->
   <nav class="navbar" id="navbar">
-    <div class="nav-inner">
+    <div class="container nav-inner">
       <a href="/" class="nav-logo">
-        <img src="https://storage.perfectcdn.com/n4s4s1/3c0zw7ujt2i3axow.png" alt="ZenScripts" class="nav-logo-img" />
-        <span class="nav-logo-text">ZenScripts</span>
+        <img src="https://storage.perfectcdn.com/n4s4s1/3c0zw7ujt2i3axow.png" alt="ZenScripts" />
+        <span class="gradient-text">ZenScripts</span>
       </a>
       <div class="nav-links">
         <a href="#scripts" class="nav-link">Scripts</a>
         <a href="#partners" class="nav-link">Partners</a>
-        <a href="./ad-form.html" class="nav-link nav-cta">Advertise</a>
+        <a href="/ad-form" class="btn btn-primary-sm">Advertise</a>
       </div>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-    <div class="mobile-menu" id="mobile-menu">
-      <a href="#scripts">Scripts</a>
-      <a href="#partners">Partners</a>
-      <a href="./ad-form.html">Advertise</a>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO SECTION -->
   <header class="hero">
-    <div class="hero-bg">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-      <div class="hero-grid"></div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-badge"><i data-lucide="rocket"></i> 500+ Free Scripts + VIP Discord Perks</div>
-      <h1>Free Scripts.<br /><span class="gradient-text">No Limits.</span></h1>
-      <p>Browse and download scripts for Rust, R6 Siege, COD, Minecraft, Valorant and more. Always free, plus exclusive Discord drops and trusted partner deals.</p>
-      <div class="hero-btns">
-        <a href="#scripts" class="btn btn-primary">Browse Scripts</a>
-        <a href="https://discord.gg/9ht3vqUkCm" target="_blank" rel="noopener" class="btn btn-ghost">Join VIP Discord</a>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="container hero-content">
+      <div class="hero-badge animate-in">
+        <i data-lucide="rocket"></i> Over 500+ Scripts Available
       </div>
-      <div class="hero-stats">
-        <div class="hstat"><span class="hstat-n">1200+</span><span class="hstat-l">Scripts Combined</span></div>
-        <div class="hstat-div"></div>
-        <div class="hstat"><span class="hstat-n">1K+</span><span class="hstat-l">Downloads</span></div>
-        <div class="hstat-div"></div>
-        <div class="hstat"><span class="hstat-n">10</span><span class="hstat-l">Games — More Soon</span></div>
+      <h1 class="animate-in">Free Scripts.<br /><span class="gradient-text">Zero Limits.</span></h1>
+      <p class="animate-in delay-1">Download $10,000+ worth of scripts for Rust, R6, COD, and more. No paywalls, no limits, always free.</p>
+      
+      <div class="hero-btns animate-in delay-2">
+        <a href="#scripts" class="btn btn-primary">Browse Library <i data-lucide="arrow-right"></i></a>
+        <a href="#partners" class="btn btn-ghost">Our Partners</a>
       </div>
-    </div>
-    <div class="hero-banner-slot">
-      <div id="slot-hero"></div>
+
+      <div class="hero-stats animate-in delay-3">
+        <div class="hstat"><strong>1.2k+</strong><span>Scripts</span></div>
+        <div class="hstat"><strong>50k+</strong><span>Downloads</span></div>
+        <div class="hstat"><strong>10+</strong><span>Games</span></div>
+      </div>
+
+      <!-- AD SLOT: HERO -->
+      <div id="slot-hero" class="ad-container animate-in delay-3"></div>
     </div>
   </header>
 
-  <!-- PARTNERS -->
+  <!-- PARTNERS SECTION -->
   <section class="partners-section" id="partners">
     <div class="container">
-      <div class="section-header">
-        <h2>Our Partners</h2>
-        <p>Verified partners with exclusive perks for ZenScripts community members</p>
-      </div>
-      <div class="seo-links">
-        <a href="./rust-scripts">Rust Scripts Guide</a>
-        <a href="./r6-scripts">R6 Scripts Guide</a>
-        <a href="./cod-scripts">COD Scripts Guide</a>
+      <div class="section-header reveal">
+        <h2>Trusted Partners</h2>
+        <p>Services we personally use and recommend to our community</p>
       </div>
       <div class="partners-grid" id="partners-grid"></div>
     </div>
   </section>
 
-  <!-- PREMIUM -->
-  <section class="premium-section" id="premium">
-    <div class="container">
-      <div class="section-header">
-        <h2>Premium Scripts</h2>
-        <p>High-performance packs with fast updates and VIP support access</p>
-      </div>
-      <div class="premium-grid" id="premium-grid"></div>
-    </div>
-  </section>
-
-  <!-- SCRIPTS -->
+  <!-- SCRIPTS HUB -->
   <section class="scripts-section" id="scripts">
     <div class="container">
-
-      <div class="controls">
+      <div class="controls reveal">
         <div class="controls-left">
           <h2>Free Scripts</h2>
-          <span class="result-count" id="result-count"></span>
+          <span id="result-count" class="badge-count"></span>
         </div>
         <div class="controls-right">
           <div class="search-box">
-            <span><i data-lucide="search"></i></span>
-            <input type="text" id="search" placeholder="Search scripts or games..." autocomplete="off" />
-            <button id="search-clear" class="clear-btn" aria-label="Clear search">
-              <i data-lucide="x"></i>
-            </button>
+            <i data-lucide="search"></i>
+            <input type="text" id="search" placeholder="Search game or feature..." />
           </div>
           <select id="sort" class="sort-select">
             <option value="popular">Most Popular</option>
             <option value="newest">Newest</option>
-            <option value="az">A — Z</option>
           </select>
         </div>
       </div>
 
-      <div class="cat-tabs-wrap">
-        <div class="cat-tabs" id="cat-tabs"></div>
-      </div>
+      <div class="cat-tabs-wrap reveal" id="cat-tabs"></div>
 
-      <div class="tag-row">
-        <span class="tag-label">Filter:</span>
-        <button class="tag-btn active" data-tag="all">All</button>
-        <button class="tag-btn tag-new" data-tag="new"><i data-lucide="circle-dot"></i> New</button>
-        <button class="tag-btn tag-popular" data-tag="popular"><i data-lucide="flame"></i> Popular</button>
-        <button class="tag-btn tag-rec" data-tag="recommended"><i data-lucide="star"></i> Recommended</button>
-      </div>
+      <!-- AD SLOT: MID -->
+      <div id="slot-mid" class="ad-container reveal"></div>
 
-      <div class="scripts-layout-full">
-        <div class="scripts-main-grid">
-          <div class="scripts-grid" id="scripts-grid"></div>
-          <aside class="scripts-sidebar">
-            <div id="slot-sidebar"></div>
-          </aside>
-        </div>
-        <div class="no-results hidden" id="no-results">
-          <div class="no-results-icon"><i data-lucide="search-x"></i></div>
-          <h3>No scripts found</h3>
-          <p>Try a different search or category.</p>
-          <button class="btn btn-ghost" id="clear-all">Clear Filters</button>
-        </div>
-        <div class="load-more-wrap hidden" id="load-more-wrap">
-          <button class="btn btn-ghost" id="load-more">Load More Scripts</button>
-        </div>
-      </div>
+      <div class="scripts-grid" id="scripts-grid"></div>
 
-      <div class="mid-banner-wrap">
-        <div id="slot-mid"></div>
+      <div id="no-results" class="no-results hidden">
+        <i data-lucide="search-x"></i>
+        <h3>No scripts found</h3>
+        <button class="btn btn-ghost" onclick="resetFilters()">Clear Filters</button>
       </div>
-
     </div>
   </section>
 
-  <!-- FOOTER BANNER -->
-  <div class="footer-banner-wrap">
-    <div class="container">
-      <div id="slot-footer"></div>
-    </div>
-  </div>
-
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <img src="https://storage.perfectcdn.com/n4s4s1/3c0zw7ujt2i3axow.png" alt="ZenScripts" class="footer-logo-img" />
-          <p>Free scripts for the gaming community. No paywalls. No limits.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Site</h4>
-          <a href="#scripts">Browse Scripts</a>
-          <a href="#partners">Partners</a>
-          <a href="./ad-form">Advertise</a>
-        </div>
-        <div class="footer-col">
-          <h4>Partners</h4>
-          <a href="https://cheapsmm.lol" target="_blank" rel="noopener">CheapSMM</a>
-          <a href="https://zenscripts.pro" target="_blank" rel="noopener">ZenScripts Pro</a>
-        </div>
-        <div class="footer-col">
-          <h4>Community</h4>
-          <a href="https://discord.gg/9ht3vqUkCm" target="_blank" rel="noopener">VIP Discord Access</a>
-          <a href="./ad-form">Place an Ad</a>
-        </div>
+    <div id="slot-footer" class="container"></div>
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="https://storage.perfectcdn.com/n4s4s1/3c0zw7ujt2i3axow.png" alt="ZenScripts" />
+        <p>Providing the gaming community with high-performance, free scripts since 2024.</p>
       </div>
-      <div class="footer-bottom">
-        <p>© 2025 ZenScripts. All rights reserved.</p>
-        <p class="footer-disc">Scripts are provided for educational purposes. Use responsibly.</p>
+      <div class="footer-copy">
+        &copy; 2025 ZenScripts Hub. All rights reserved.
       </div>
     </div>
   </footer>
 
   <!-- MODAL -->
   <div class="modal-overlay hidden" id="modal-overlay">
-    <div class="modal" id="modal">
-      <button class="modal-close" id="modal-close" aria-label="Close modal">
-        <i data-lucide="x"></i>
-      </button>
-      <div class="modal-body" id="modal-body"></div>
+    <div class="modal">
+      <button class="modal-close" id="modal-close"><i data-lucide="x"></i></button>
+      <div id="modal-body" class="modal-content"></div>
     </div>
   </div>
 
-  <script src="./data.js"></script>
-  <script src="./app.js"></script>
-
+  <script src="app.js"></script>
 </body>
 </html>
